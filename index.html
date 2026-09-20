@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#065f46" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Sathyam Bio - India's Leading Agricultural E-Commerce, Crop Protection & ERP Platform for Farmers" />
+  <meta name="keywords" content="pesticides, agro chemicals, crop protection, bio pesticides, fertilizers, farmer portal, agricultural ERP" />
+  <title>Sathyam Bio - India's Agro Pesticides, Crop Protection & Agricultural ERP Platform</title>
+
+  <!-- Google Fonts: Inter and Poppins (app), Plus Jakarta Sans and Outfit (storefront),
+       and Noto Sans Tamil, Kannada, Telugu and Devanagari for the Indian languages.
+       The Noto fonts are listed in the font stacks only while the page is in that
+       language (index.css, "INDIAN-LANGUAGE TEXT"), so English pages download none. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400..800&family=Noto+Sans+Kannada:wght@400..800&family=Noto+Sans+Telugu:wght@400..800&family=Noto+Sans+Devanagari:wght@400..800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome: the icon set used by the storefront and the bottom bar -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Razorpay Checkout SDK: fetched when a payment actually starts
+       (hooks/useCheckout.js loadRazorpay, which already retries a flaky
+       connection). Loaded here it was a render-blocking 58 KB from a third
+       party on every page - over a second on mobile data - for something only
+       the checkout uses. The preconnect keeps the payment itself quick. -->
+  <link rel="preconnect" href="https://checkout.razorpay.com" crossorigin>
+
+  <!-- Schema.org JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AgricultureStore",
+    "name": "Sathyam Bio",
+    "description": "India's Leading Agro Pesticides, Crop Protection & Agricultural ERP Platform",
+    "url": "https://sathyambio.com",
+    "telephone": "+91-98450-12345",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Coimbatore",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+import { useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import Sidebar from '../components/Sidebar'
+import { Menu } from 'lucide-react'
+
+const ADMIN_NAV = [
+  {
+    title: 'DASHBOARD',
+    links: [
+      { to: '/admin',              end: true, icon: '📊', label: 'Overview' },
+      { to: '/admin/analytics',              icon: '📈', label: 'Analytics' },
+    ]
+  },
+  {
+    title: 'CONTENT',
+    links: [
+      { to: '/admin/cms',         icon: '✏️', label: 'Live CMS Editor' },
+      { to: '/admin/products',    icon: '🌿', label: 'Products Master' },
+      { to: '/admin/blogs',       icon: '📖', label: 'Blog Articles' },
+      { to: '/admin/videos',      icon: '🎬', label: 'Video Library' },
+    ]
+  },
+  {
+    title: 'OPERATIONS',
+    links: [
+      { to: '/admin/users',        icon: '👤', label: 'Users & Credentials' },
+      { to: '/admin/profile-fields', icon: '🧾', label: 'Profile Form Builder' },
+      { to: '/admin/orders',       icon: '📦', label: 'Order Management' },
+      { to: '/admin/subscribers',  icon: '📩', label: 'Advisory Subscribers' },
+      { to: '/admin/enquiries',    icon: '📝', label: 'Farmer Enquiries' },
+      { to: '/admin/employees',    icon: '👥', label: 'Employees' },
+    ]
+  },
+  {
+    title: 'MARKETING & PROMOTIONS',
+    links: [
+      { to: '/admin/coupons',   icon: '🎟️', label: 'Coupons & Credits' },
+      { to: '/admin/referrals', icon: '🎁', label: 'Referrals & Points' },
+    ]
+  },
+  {
+    title: 'SUPPORT',
+    links: [
+      { to: '/admin/support-tickets', icon: '🎫', label: 'Support Tickets' },
+      { to: '/admin/tickets', icon: '🔔', label: 'Notifications' },
+      { to: '/admin/chat',    icon: '💬', label: 'Chat Records' },
+    ]
+  }
+]
+
+export default function AdminLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { pathname } = useLocation()
+  const links = ADMIN_NAV.flatMap(section => section.links)
+  const current = links.find(l => l.to === pathname) || links.find(l => !l.end && pathname.startsWith(`${l.to}/`))
+  return (
+    <div className="app-layout">
+      <Sidebar items={ADMIN_NAV} roleName="Admin" roleEmoji="🛡️" isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="main-content">
+        <header className="topbar">
+          <div className="topbar-left">
+            <button className="hamburger-btn" onClick={() => setSidebarOpen(true)} aria-label="Open navigation menu"><Menu size={20} /></button>
+            <div className="topbar-heading">
+              <div className="topbar-title">{current ? current.label : 'Dashboard'}</div>
+              <div className="topbar-subtitle">Admin · Sathyam Bio Enterprise Management</div>
+            </div>
+          </div>
+          <div className="topbar-right">
+            <span className="badge badge-red topbar-role">ADMIN</span>
+          </div>
+        </header>
+        <main className="page-content"><Outlet /></main>
+      </div>
+    </div>
+  )
+}
+
